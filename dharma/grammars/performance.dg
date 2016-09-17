@@ -23,7 +23,9 @@ methods :=
 	performance.setResourceTimingBufferSize("+common:intoverflow+")
 	performance.mark(+markNames+)
 	performance.clearMarks("+common:text+")
-	performance.measure()
+	performance.measure(+markNames+,+measureString+,+measureString+)
+	performance.measure("test,+measureString+,+measureString+)
+	performance.measure("test,+markNames+)
 	performance.clearMeasures("+common:text+")
 	performance.toJSON()
 	!timingInfo!.toJSON()
@@ -34,10 +36,38 @@ markNames :=
 	"mark_end"
 	""
 
+perfTiming :=
+	toJSON
+	navigationStart
+	unloadEventStart
+	unloadEventEnd
+	redirectStart
+	redirectEnd
+	fetchStart
+	domainLookupStart
+	domainLookupEnd
+	connectStart
+	connectEnd
+	requestStart
+	responseStart
+	responseEnd
+	domLoading
+	domInteractive
+	domContentLoadedEventStart
+	domContentLoadedEventEnd
+	domComplete
+	loadEventStart
+	loadEventEnd
+
 measureString :=
 	+markNames+
+	+perfTiming+
 	"mark"
 	"measure"
+	undefined
+	"ᵘⁿⁱᶜᵒᵈᵉ"
+	null
+	{}
 
 entryTypes :=
 	"frame"
